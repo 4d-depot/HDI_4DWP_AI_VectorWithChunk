@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="HDI_4DWP_AI_VectorWithChunk" uuid="01979CADE2A8788F8E67015034442AA9" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="Prompts" uuid="0197B126EAF773CAAED2E33B7D847D75" id="2">
+		<field name="ID" uuid="0197B126EAF875BA8B59DEC449A4346B" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Description" uuid="0197B12725D57A6EBD3A5807759F8BE6" type="10" limiting_length="255" id="2"/>
+		<field name="Vector" uuid="0197B1273D1878DDA88CF0D4E87F09A5" type="21" blob_switch_size="2147483647" id="3"/>
+		<primary_key field_name="ID" field_uuid="0197B126EAF875BA8B59DEC449A4346B"/>
+		<table_extra output_form="List" input_form="Detail"/>
+	</table>
+	<table name="Document" uuid="F5F1395E1DBF4CFA9848AF3FFE29ADCF" id="3">
+		<field name="ID" uuid="5500E88368BD426DA412856003ADA899" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Title" uuid="33265B9D8E23416BB60FF9F05243E49A" type="10" id="2"/>
+		<field name="WP" uuid="4881EEFC6B69462ABEA33DF9C60E4DB6" type="21" blob_switch_size="2147483647" id="3"/>
+		<primary_key field_name="ID" field_uuid="5500E88368BD426DA412856003ADA899"/>
+		<table_extra output_form="Output" input_form="Input"/>
+	</table>
+	<table name="Chunk" uuid="2F86F401158C47EC9A0C8AAA25A6AE72" id="4">
+		<field name="ID" uuid="6A72114DDA004FA4BC7BE9D7F434E275" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="ID_Document" uuid="8D77D5497D3540EF9CC3A316F649367F" type="4" id="2"/>
+		<field name="startOffset" uuid="790589C5613B4CD8B89C2334A6F16588" type="4" id="3"/>
+		<field name="endOffset" uuid="BAD127535AD54F6DB7B04E507BA0F21E" type="4" id="4"/>
+		<field name="embedding" uuid="1169EAB8D12E4859B5CC748D47AEB9EA" type="21" blob_switch_size="2147483647" id="5"/>
+		<field name="textExtract" uuid="9DC6FA86B5A84704BAC5BC8581D721C3" type="10" id="6"/>
+		<primary_key field_name="ID" field_uuid="6A72114DDA004FA4BC7BE9D7F434E275"/>
+		<table_extra output_form="Output" input_form="Input"/>
+	</table>
+	<relation uuid="0F9BB1C1C8CF430381FF2860A3286D76" name_Nto1="document" name_1toN="chunks" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8D77D5497D3540EF9CC3A316F649367F" name="ID_Document">
+				<table_ref uuid="2F86F401158C47EC9A0C8AAA25A6AE72" name="Chunk"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="5500E88368BD426DA412856003ADA899" name="ID">
+				<table_ref uuid="F5F1395E1DBF4CFA9848AF3FFE29ADCF" name="Document"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<index kind="regular" unique_keys="true" uuid="0197B126EAF879539C6EB184400028E9" type="7">
+		<field_ref uuid="0197B126EAF875BA8B59DEC449A4346B" name="ID">
+			<table_ref uuid="0197B126EAF773CAAED2E33B7D847D75" name="Prompts"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0197B127AA1676EDAA2956DAC775BA70" type="3">
+		<field_ref uuid="0197B1273D1878DDA88CF0D4E87F09A5" name="Vector">
+			<table_ref uuid="0197B126EAF773CAAED2E33B7D847D75" name="Prompts"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="2A0527C119D1405FA272427E24F3368A" type="7">
+		<field_ref uuid="6A72114DDA004FA4BC7BE9D7F434E275" name="ID">
+			<table_ref uuid="2F86F401158C47EC9A0C8AAA25A6AE72" name="Chunk"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="EB4F16D5CE9A4CE29D53FFDDEB289240" type="7">
+		<field_ref uuid="5500E88368BD426DA412856003ADA899" name="ID">
+			<table_ref uuid="F5F1395E1DBF4CFA9848AF3FFE29ADCF" name="Document"/>
+		</field_ref>
+	</index>
+	<base_extra>
+		<journal_file journal_file_enabled="false"/>
+	</base_extra>
+</base>

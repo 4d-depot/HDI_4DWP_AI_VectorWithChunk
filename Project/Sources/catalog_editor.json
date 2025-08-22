@@ -1,0 +1,59 @@
+{
+	"tables": {
+		"Chunk": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 229.84765625,
+				"top": 11.30859375,
+				"width": 120,
+				"height": 194.3046875
+			},
+			"displayable_fields_count": 7
+		},
+		"Document": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 14.09375,
+				"top": 12.62890625,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6
+		},
+		"Prompts": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 524.62890625,
+				"top": 6.87890625,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6
+		}
+	},
+	"relations": {
+		"0F9BB1C1C8CF430381FF2860A3286D76": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		}
+	}
+}

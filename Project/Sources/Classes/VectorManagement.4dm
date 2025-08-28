@@ -40,8 +40,3 @@ Function calculateWithSelectedPrompt($prompt : cs:C1710.PromptsEntity) : cs:C171
 	
 	// Return the receipts ordered by cosine similarity (most similar first)
 	return ds:C1482.Chunk.all().orderByFormula(Formula:C1597(This:C1470.embedding.cosineSimilarity($prompt.Vector)); dk descending:K85:32).slice(0; 5)
-	
-	//return ds.Chunk.query("embedding > :1 order by embedding"; {vector: $prompt.Vector; metric: "cosine"; threshold: 0.6})
-	//return ds.Chunk.query("embedding > :1 order by embedding"; {vector: $prompt.Vector; metric: "cosine"}).slice(0; 5)
-	
-	
